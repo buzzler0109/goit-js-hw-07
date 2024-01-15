@@ -3,12 +3,13 @@ const container = document.querySelector("div#boxes");
 
 function createBoxes(amount) {
   let x = 30;
+  let boxMarkup = "";
   for (let i = 0; i < amount; i++) {
-    const boxMarkup = `<div style="background-color: ${getRandomHexColor()}; width: ${
+    boxMarkup += `<div style="background-color: ${getRandomHexColor()}; width: ${
       x + i * 10
     }px; height: ${x + i * 10}px;"></div>`;
-    container.insertAdjacentHTML("beforeend", boxMarkup);
   }
+  container.insertAdjacentHTML("beforeend", boxMarkup);
 }
 
 const createBtn = document.querySelector("[data-create]");
@@ -17,13 +18,18 @@ const destroyBtn = document.querySelector("[data-destroy]");
 createBtn.addEventListener("click", onCreateClick);
 function onCreateClick() {
   container.innerHTML = "";
-  const amount = userInput.value;
+  const amount = parseInt(userInput.value, 10);
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
   } else {
-    alert("Число має бути в межах від 1 до 100 включно!");
+    userInput.setAttribute("placeholder", "min 1, max 100");
   }
   userInput.value = "";
+}
+
+userInput.addEventListener("click", onInput);
+function onInput() {
+  userInput.removeAttribute("placeholder");
 }
 
 destroyBtn.addEventListener("click", destroyBoxes);

@@ -5,5 +5,5 @@ const mySubtitle = document.querySelectorAll(".item > h2");
 
 const result = mySubtitle.forEach((elem) => {
   console.log(`Category: ${elem.textContent}`);
-  console.log(`Elemnts: ${elem.nextElementSibling.children.length}`);
+  console.log(`Elements: ${elem.nextElementSibling.children.length}`);
 });

@@ -7,7 +7,7 @@ btn.addEventListener("click", onButtonClick);
 function onButtonClick() {
   const color = getRandomHexColor();
   docBody.style.backgroundColor = color;
-  textColor.textContent = `${color}`;
+  textColor.textContent = color;
 }
 
 function getRandomHexColor() {
